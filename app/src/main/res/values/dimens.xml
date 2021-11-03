@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="nav_bar_height">88dp</dimen>
+    <dimen name="margin_double">16dp</dimen>
+    <dimen name="card_width">156dp</dimen>
+    <dimen name="card_height">229dp</dimen>
+    <dimen name="margin_normal">8dp</dimen>
+    <dimen name="item_subtitle_size">9sp</dimen>
+    <dimen name="item_title_size">12sp</dimen>
+</resources>

@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">MarsExplorer</string>
+    <string name="title_main">Main</string>
+    <string name="title_map">Map</string>
+    <string name="show_image">Show image</string>
+
+</resources>
