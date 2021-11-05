@@ -3,5 +3,11 @@
     <string name="title_main">Main</string>
     <string name="title_map">Map</string>
     <string name="show_image">Show image</string>
+    <string name="text_hint">Используйте жесты,\nчтобы приблизить/отдалить</string>
+    <string name="text_go_back">Нажмите кнопку,\nчтобы вернуться назад</string>
+    <string name="text_share">Нажмите кнопку,\nчтобы поделиться</string>
+    <string name="network_off">Отсутсвует подключение\n к интернету</string>
+    <string name="repeat">Повторить</string>
+    <string name="share_link">Поделиться ссылкой с помощью</string>
 
 </resources>

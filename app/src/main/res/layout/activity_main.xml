@@ -25,4 +25,13 @@
         app:layout_constraintBottom_toTopOf="@+id/bottom_nav_bar"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container_splash"
+        android:layout_width="match_parent"
+        android:elevation="@dimen/margin_normal"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
   </androidx.constraintlayout.widget.ConstraintLayout>

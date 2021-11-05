@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:background="@color/background_color"
+        android:layout_height="match_parent">
+
+
+        <ImageView
+            android:id="@+id/icon_splash"
+            android:layout_width="@dimen/icon_size"
+            android:layout_height="@dimen/icon_size"
+            android:src="@drawable/ic_wifi_off"
+            android:visibility="invisible"
+            android:layout_marginBottom="@dimen/margin_double"
+            android:elevation="@dimen/margin_double"
+            app:layout_constraintBottom_toTopOf="@+id/message_splash"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:tint="@color/white" />
+
+        <TextView
+            android:id="@+id/message_splash"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:elevation="@dimen/margin_double"
+            android:text="@string/network_off"
+            android:visibility="invisible"
+            android:textColor="@color/white"
+            android:textSize="@dimen/carbon_textSizeTitle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <carbon.widget.Button
+            android:id="@+id/repeat_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:layout_marginTop="@dimen/margin_triple"
+            android:paddingHorizontal="@dimen/margin_double"
+            android:text="@string/repeat"
+            android:textColor="@color/background_color"
+            android:visibility="gone"
+            app:carbon_cornerRadius="@dimen/button_corner_radius"
+            app:carbon_tint="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/message_splash" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -4,7 +4,6 @@ import android.content.Context
 import android.graphics.Color
 import android.graphics.LinearGradient
 import android.graphics.Shader
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,10 +13,8 @@ import by.huk.marsexplorer.R
 import by.huk.marsexplorer.data.entities.crypto.PhotoEntity
 import by.huk.marsexplorer.databinding.ItemPhotoBinding
 import com.bumptech.glide.Glide
-import com.bumptech.glide.RequestBuilder
-import com.squareup.picasso.Picasso
 
-class PhotoAdapter(val context: Context) :
+class PhotoAdapter(val context: Context, val mainPresenter: IMainPresenter) :
     RecyclerView.Adapter<PhotoAdapter.PhotoViewHolder>() {
 
     private var photoList = ArrayList<PhotoEntity>()
@@ -26,10 +23,8 @@ class PhotoAdapter(val context: Context) :
     fun initialize(list: List<PhotoEntity>) {
         if (photoList.isNullOrEmpty()) {
             photoList = list.toMutableList() as ArrayList<PhotoEntity>
-        } else {
-            photoList.addAll(list.toMutableList() as ArrayList<PhotoEntity>)
+            notifyDataSetChanged()
         }
-        notifyDataSetChanged()
     }
 
 
@@ -53,6 +48,10 @@ class PhotoAdapter(val context: Context) :
                 title.text = item.name
                 subtitle.text = item.fullName
                 Glide.with(context).load(item.imgSrc).into(this.photo)
+            }
+
+            binding.itemContainer.setOnClickListener {
+                mainPresenter.onItemCLick(item.imgSrc)
             }
 
 

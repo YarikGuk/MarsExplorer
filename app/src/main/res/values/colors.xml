@@ -12,4 +12,5 @@
     <color name="colorPrimaryVariant">#040D16</color>
     <color name="gray_300">#979797</color>
     <color name="pink_700">#C00F9E</color>
+    <color name="background_color">#131313</color>
 </resources>

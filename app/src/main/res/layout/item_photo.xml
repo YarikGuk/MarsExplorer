@@ -23,6 +23,10 @@
             app:cardCornerRadius="@dimen/margin_double">
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/item_container"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?attr/selectableItemBackground"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
@@ -48,7 +52,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/margin_normal"
-                    android:text="Curiosity"
                     android:textColor="@color/white"
                     android:textSize="@dimen/item_title_size"
                     app:layout_constraintTop_toBottomOf="@+id/cardView"
@@ -59,22 +62,21 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/margin_normal"
-                    android:text="Front Hazard Avoidance Camera"
                     android:textColor="@color/white"
                     android:textSize="@dimen/item_subtitle_size"
                     app:layout_constraintTop_toBottomOf="@+id/title"
-                    tools:ignore="SmallSp"
-                    tools:layout_editor_absoluteX="8dp" />
+                />
 
                 <TextView
                     android:id="@+id/show_image_button"
                     style="@style/Widget.MaterialComponents.Button.TextButton"
                     android:layout_width="wrap_content"
-                    android:layout_height="40dp"
+                    android:layout_height="wrap_content"
                     android:text="@string/show_image"
                     android:textSize="@dimen/item_title_size"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/subtitle"/>
+                    app:layout_constraintTop_toBottomOf="@+id/subtitle" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
     </carbon.widget.ConstraintLayout>
