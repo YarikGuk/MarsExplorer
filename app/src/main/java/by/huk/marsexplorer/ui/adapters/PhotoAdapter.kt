@@ -1,4 +1,4 @@
-package by.huk.marsexplorer.ui.main
+package by.huk.marsexplorer.ui.adapters
 
 import android.content.Context
 import android.graphics.Color
@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import by.huk.marsexplorer.R
 import by.huk.marsexplorer.data.entities.crypto.PhotoEntity
 import by.huk.marsexplorer.databinding.ItemPhotoBinding
+import by.huk.marsexplorer.ui.main.IMainPresenter
 import com.bumptech.glide.Glide
 
 class PhotoAdapter(val context: Context, val mainPresenter: IMainPresenter) :
@@ -35,8 +36,7 @@ class PhotoAdapter(val context: Context, val mainPresenter: IMainPresenter) :
 
             val item = photoList[position]
 
-            val paint = binding.showImageButton.paint
-            val width = paint.measureText(binding.showImageButton.text.toString())
+            val width = binding.showImageButton.paint.measureText(binding.showImageButton.text.toString())
             val textShader =
                 LinearGradient(0f, 0f, width, binding.showImageButton.textSize, intArrayOf(
                     Color.parseColor("#C00F9E"),
@@ -61,7 +61,7 @@ class PhotoAdapter(val context: Context, val mainPresenter: IMainPresenter) :
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int,
-    ): PhotoAdapter.PhotoViewHolder {
+    ): PhotoViewHolder {
         val binding =
             DataBindingUtil.inflate<ItemPhotoBinding>(LayoutInflater.from(parent.context),
                 R.layout.item_photo,
@@ -70,7 +70,7 @@ class PhotoAdapter(val context: Context, val mainPresenter: IMainPresenter) :
         return PhotoViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: PhotoAdapter.PhotoViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: PhotoViewHolder, position: Int) {
         holder.bind(holder.itemView, position)
     }
 

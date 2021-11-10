@@ -34,9 +34,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-<ImageView
+<by.huk.marsexplorer.ui.details.CustomZoomImageView
     android:id="@+id/photo"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:scaleType="centerCrop"/>
+    android:scaleType="matrix"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

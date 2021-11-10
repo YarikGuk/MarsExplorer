@@ -1,4 +1,4 @@
-package by.huk.marsexplorer.ui
+package by.huk.marsexplorer.ui.splash
 
 import android.content.Context
 import android.net.ConnectivityManager
@@ -20,14 +20,13 @@ class SplashScreenFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ): View? {
+    ): View {
         _binding = FragmentSpalshScreenBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
 
         checkNetwork()
 

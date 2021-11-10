@@ -1,11 +1,12 @@
 package by.huk.marsexplorer.ui
 
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import by.huk.marsexplorer.App
 import by.huk.marsexplorer.R
-import by.huk.marsexplorer.appComponent
 import by.huk.marsexplorer.databinding.ActivityMainBinding
+import by.huk.marsexplorer.ui.splash.SplashScreenFragment
 import by.huk.marsexplorer.utils.Screens
 import com.github.terrakok.cicerone.androidx.AppNavigator
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -20,11 +21,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_NOSENSOR
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-
         bottomNavigationBar = binding.bottomNavBar
         bottomNavigationBar.itemIconTintList = null
 

@@ -1,6 +1,5 @@
 package by.huk.marsexplorer.data.entities.crypto
 
-import com.google.gson.annotations.SerializedName
 
 data class PhotoEntity(
     val id: Int,

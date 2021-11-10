@@ -35,9 +35,6 @@ class DetailsFragment(private val photoUrl: String) : Fragment(), DetailContract
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         presenter.onViewCreated()
-        Glide.with(requireContext()).load(photoUrl).into(binding.photo)
-
-
         binding.goBackBtn.setOnClickListener { presenter.onButtonClick(it) }
         binding.shareBtn.setOnClickListener { presenter.onButtonClick(it) }
     }
@@ -57,13 +54,17 @@ class DetailsFragment(private val photoUrl: String) : Fragment(), DetailContract
 
     override fun sharePhoto() {
         val message = "Look at this!\n$photoUrl"
-        val shareIntent = Intent()
-        shareIntent.action = Intent.ACTION_SEND
-        shareIntent.type = "text/plain"
-        shareIntent.putExtra(Intent.EXTRA_TEXT, message)
+        val shareIntent = Intent().apply {
+            action = Intent.ACTION_SEND
+            type = "text/plain"
+            putExtra(Intent.EXTRA_TEXT, message)
+        }
         startActivity(Intent.createChooser(shareIntent, getString(R.string.share_link)))
     }
 
+    override fun loadImage() {
+        Glide.with(requireContext()).load(photoUrl).into(binding.photo)
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()

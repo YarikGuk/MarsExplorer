@@ -17,6 +17,7 @@ class DetailPresenterImpl(detailsFragment: DetailsFragment) : IDetailPresenter {
 
     override fun onViewCreated() {
         if (!App.INSTANCE.hintIsShowed) view.showHint()
+        view.loadImage()
     }
 
 

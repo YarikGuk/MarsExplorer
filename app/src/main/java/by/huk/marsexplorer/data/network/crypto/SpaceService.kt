@@ -6,7 +6,6 @@ import by.huk.marsexplorer.utils.PAGE
 import io.reactivex.rxjava3.core.Observable
 import retrofit2.http.GET
 import retrofit2.http.Query
-import javax.inject.Inject
 
 interface SpaceService {
 

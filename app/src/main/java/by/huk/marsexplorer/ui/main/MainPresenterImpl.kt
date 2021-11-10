@@ -1,6 +1,5 @@
 package by.huk.marsexplorer.ui.main
 
-import android.util.Log
 import by.huk.marsexplorer.App
 import by.huk.marsexplorer.data.entities.crypto.PhotoEntity
 import by.huk.marsexplorer.data.source.dto.mappers.MarsResponseMapper

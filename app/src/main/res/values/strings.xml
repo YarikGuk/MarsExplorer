@@ -9,5 +9,15 @@
     <string name="network_off">Отсутсвует подключение\n к интернету</string>
     <string name="repeat">Повторить</string>
     <string name="share_link">Поделиться ссылкой с помощью</string>
+    <string name="marker_name">Marker name</string>
+    <string name="longitude">Longitude:</string>
+    <string name="wight">Wight:</string>
+    <string name="latitude">Latitude</string>
+    <string name="save_btn">save</string>
+    <string name="cancel_btn">cancel</string>
+    <string name="choose_landscape">Тип ландшафта</string>
+    <string name="shema">Схема</string>
+    <string name="satellite">Спутник</string>
+    <string name="hybrid">Гибрид</string>
 
 </resources>

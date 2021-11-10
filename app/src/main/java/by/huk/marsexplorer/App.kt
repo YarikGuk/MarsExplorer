@@ -1,12 +1,9 @@
 package by.huk.marsexplorer
 
 import android.app.Application
-import android.content.Context
 import by.huk.marsexplorer.di.component.AppComponent
 import by.huk.marsexplorer.di.component.DaggerAppComponent
 import com.github.terrakok.cicerone.Cicerone
-import dagger.android.AndroidInjector
-import dagger.android.DaggerApplication
 
 class App : Application() {
     lateinit var appComponent: AppComponent
@@ -26,8 +23,3 @@ class App : Application() {
             private set
     }
 }
-    val Context.appComponent:AppComponent
-    get() = when(this){
-        is App -> appComponent
-        else -> this.applicationContext.appComponent
-    }

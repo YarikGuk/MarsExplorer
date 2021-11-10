@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import by.huk.marsexplorer.R
 import by.huk.marsexplorer.data.entities.crypto.PhotoEntity
 import by.huk.marsexplorer.databinding.FragmentMainBinding
+import by.huk.marsexplorer.ui.adapters.PhotoAdapter
 import by.huk.marsexplorer.utils.applyLoopingAnimatedVectorDrawable
 
 class MainFragment : Fragment(),MainContractsView {
