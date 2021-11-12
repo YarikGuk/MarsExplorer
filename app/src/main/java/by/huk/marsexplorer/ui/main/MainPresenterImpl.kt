@@ -10,7 +10,7 @@ import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.schedulers.Schedulers
 
-class MainPresenterImpl(mainFragment: MainFragment):IMainPresenter {
+class MainPresenterImpl(mainFragment: MainContractsView):IMainPresenter {
     private var view: MainContractsView = mainFragment
     private val model = App.INSTANCE.appComponent.model
     private val router = App.INSTANCE.router
@@ -57,6 +57,4 @@ class MainPresenterImpl(mainFragment: MainFragment):IMainPresenter {
         disposable.clear()
         disposable.dispose()
     }
-
-
 }

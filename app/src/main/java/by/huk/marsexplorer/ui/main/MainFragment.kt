@@ -23,7 +23,6 @@ class MainFragment : Fragment(),MainContractsView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         getPresenter()
-
     }
     override fun onCreateView(
         inflater: LayoutInflater,

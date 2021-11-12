@@ -22,17 +22,15 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.*
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
-class MapPresenterImpl(mapFragment: MapFragment, val context: Context) : IMapPresenter {
+class MapPresenterImpl(mapFragment: MapContractsView, val context: Context) : IMapPresenter {
     val view: MapContractsView = mapFragment
     private val adapter = MarkerAdapter(this)
     private var googleMap: GoogleMap? = null
     private var currentMapType = GoogleMap.MAP_TYPE_NORMAL
 
-
     @SuppressLint("UseCompatLoadingForDrawables")
     private val markerBitmap =
         context.getDrawable(R.drawable.ic_marker)!!.toBitmap(MARKER_WIDTH, MARKER_HEIGHT)
-
 
     override fun setMapCallback(): OnMapReadyCallback {
         @SuppressLint("ResourceAsColor")
@@ -114,9 +112,7 @@ class MapPresenterImpl(mapFragment: MapFragment, val context: Context) : IMapPre
                 }
                 true
             }
-
         }.show()
-
     }
 
     private fun setMapType(mapType: Int) {

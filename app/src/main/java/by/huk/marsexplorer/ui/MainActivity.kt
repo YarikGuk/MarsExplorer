@@ -13,7 +13,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
 
-
     private lateinit var binding: ActivityMainBinding
     private val navigator = AppNavigator(this, R.id.fragment_container)
     private val router = App.INSTANCE.router
@@ -27,14 +26,11 @@ class MainActivity : AppCompatActivity() {
         bottomNavigationBar = binding.bottomNavBar
         bottomNavigationBar.itemIconTintList = null
 
-
         supportFragmentManager
             .beginTransaction()
             .addToBackStack(null)
             .add(R.id.container_splash, SplashScreenFragment())
             .commit()
-
-
 
         bottomNavigationBar.setOnItemSelectedListener {
             when (it.itemId) {
@@ -44,10 +40,8 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_map -> {
                     router.newRootChain(Screens.map())
                 }
-
             }
             true
-
         }
     }
 

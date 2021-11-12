@@ -9,8 +9,6 @@ import android.view.MotionEvent
 import androidx.appcompat.widget.AppCompatImageView
 import by.huk.marsexplorer.ui.details.CustomZoomImageView.State.*
 
-
-
 class CustomZoomImageView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
@@ -27,9 +25,6 @@ class CustomZoomImageView @JvmOverloads constructor(
     private var start = PointF()
     private var mid = PointF()
     private var oldDist = 1f
-
-
-
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onTouchEvent(event: MotionEvent?): Boolean {
@@ -72,7 +67,6 @@ class CustomZoomImageView @JvmOverloads constructor(
             return true
         } else return false
     }
-
 
     private fun distance(event: MotionEvent): Float {
         val x = event.getX(0) - event.getX(1)

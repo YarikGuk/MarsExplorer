@@ -4,7 +4,7 @@ import android.view.View
 import by.huk.marsexplorer.App
 import by.huk.marsexplorer.R
 
-class DetailPresenterImpl(detailsFragment: DetailsFragment) : IDetailPresenter {
+class DetailPresenterImpl(detailsFragment: DetailContractView) : IDetailPresenter {
     val view: DetailContractView = detailsFragment
 
     override fun onButtonClick(button: View) {
@@ -12,7 +12,6 @@ class DetailPresenterImpl(detailsFragment: DetailsFragment) : IDetailPresenter {
             R.id.go_back_btn -> view.popBackStack()
             R.id.share_btn -> view.sharePhoto()
         }
-
     }
 
     override fun onViewCreated() {

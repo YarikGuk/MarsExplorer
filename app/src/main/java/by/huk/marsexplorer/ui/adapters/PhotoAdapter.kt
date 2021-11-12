@@ -20,14 +20,12 @@ class PhotoAdapter(val context: Context, val mainPresenter: IMainPresenter) :
 
     private var photoList = ArrayList<PhotoEntity>()
 
-
     fun initialize(list: List<PhotoEntity>) {
         if (photoList.isNullOrEmpty()) {
             photoList = list.toMutableList() as ArrayList<PhotoEntity>
             notifyDataSetChanged()
         }
     }
-
 
     inner class PhotoViewHolder(private val binding: ItemPhotoBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -53,8 +51,6 @@ class PhotoAdapter(val context: Context, val mainPresenter: IMainPresenter) :
             binding.itemContainer.setOnClickListener {
                 mainPresenter.onItemCLick(item.imgSrc)
             }
-
-
         }
     }
 

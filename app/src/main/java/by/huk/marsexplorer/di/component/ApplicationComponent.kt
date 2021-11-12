@@ -7,7 +7,7 @@ import by.huk.marsexplorer.ui.main.MainFragment
 
 import dagger.Component
 
-@Component(modules = [NetModule::class,])
+@Component(modules = [NetModule::class])
 interface AppComponent {
     fun inject(mainFragment: MainFragment)
     val model :Model

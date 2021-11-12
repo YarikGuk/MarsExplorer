@@ -33,7 +33,6 @@ class SplashScreenFragment : Fragment() {
         binding.repeatBtn.setOnClickListener {
             checkNetwork()
         }
-
     }
 
     private fun isNetworkEnable(context: Context): Boolean {

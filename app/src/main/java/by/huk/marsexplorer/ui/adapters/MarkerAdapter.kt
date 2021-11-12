@@ -30,7 +30,6 @@ class MarkerAdapter(val context: MapPresenterImpl) :
         notifyItemRemoved(index)
     }
 
-
     inner class MarkerViewHolder(private val binding: ItemCoordinateBinding) :
         RecyclerView.ViewHolder(binding.root) {
 

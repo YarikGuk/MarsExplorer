@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "243318995910",
+    "project_id": "marsexplorer-c26ef",
+    "storage_bucket": "marsexplorer-c26ef.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:243318995910:android:52adbd02ce3d57e7bad0c7",
+        "android_client_info": {
+          "package_name": "by.huk.marsexplorer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "243318995910-mqfk9lvc2tm6q4lbp5tss547soepcrd2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAks0kw0VUmUPml9vC4iC-FKZWrgyFso1Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "243318995910-mqfk9lvc2tm6q4lbp5tss547soepcrd2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

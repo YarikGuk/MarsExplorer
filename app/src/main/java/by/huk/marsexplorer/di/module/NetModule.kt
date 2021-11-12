@@ -1,12 +1,10 @@
 package by.huk.marsexplorer.di.module
 
-import android.util.Log
 import by.huk.marsexplorer.BuildConfig
 import by.huk.marsexplorer.data.model.Model
 import by.huk.marsexplorer.data.network.crypto.SpaceService
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import dagger.Module
 import dagger.Provides
 import hu.akarnokd.rxjava3.retrofit.RxJava3CallAdapterFactory
@@ -14,7 +12,6 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.util.concurrent.TimeUnit
 
 @Module
 class NetModule {
