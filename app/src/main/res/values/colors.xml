@@ -15,6 +15,7 @@
     <color name="gradient_start_color">#C00F9E</color>
     <color name="gradient_color">#DB32B1</color>
     <color name="gray_300">#979797</color>
+    <color name="light_gray">#6FFFFFFF</color>
     <color name="dark_gray">#2B2B2B</color>
     <color name="background_color">#131313</color>
     <color name="black_300">#171717</color>

@@ -12,7 +12,7 @@
         android:layout_height="@dimen/nav_bar_height"
         app:itemRippleColor="@color/carbon_rippleColor_light"
         app:labelVisibilityMode="unlabeled"
-        app:itemIconSize="55dp"
+        app:itemIconSize="@dimen/nav_bar_icon_size"
         android:elevation="@dimen/margin_normal"
         android:background="@color/colorPrimaryVariant"
         app:layout_constraintBottom_toBottomOf="parent"
