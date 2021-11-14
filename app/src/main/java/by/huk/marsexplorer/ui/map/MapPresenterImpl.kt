@@ -2,8 +2,6 @@ package by.huk.marsexplorer.ui.map
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.graphics.Bitmap
-import android.graphics.Color
 import android.support.annotation.MenuRes
 import android.view.Gravity
 import android.view.MenuItem
@@ -48,7 +46,7 @@ class MapPresenterImpl(mapFragment: MapContractsView, val context: Context) : IM
 
     private fun setClickListeners(googleMap: GoogleMap) {
         with(googleMap) {
-            setOnMapClickListener { showAlertDialog(googleMap, it, markerBitmap) }
+            setOnMapClickListener { showAlertDialog(googleMap, it) }
             setOnMarkerClickListener {
                 it.showInfoWindow()
                 false
@@ -56,24 +54,31 @@ class MapPresenterImpl(mapFragment: MapContractsView, val context: Context) : IM
         }
     }
 
-    private fun showAlertDialog(googleMap: GoogleMap, it: LatLng, markerBitmap: Bitmap) {
+    private fun showAlertDialog(googleMap: GoogleMap, position: LatLng) {
         val editText = getEditText()
         val constraintLayout = getLayout(editText)
 
-        MaterialAlertDialogBuilder(context,
-            R.style.MaterialAlertDialog_MaterialComponents)
+
+
+        MaterialAlertDialogBuilder(context)
             .setView(constraintLayout)
             .setPositiveButton(context.getString(R.string.save_btn)) { _, _ ->
-                val marker =
-                    googleMap.addMarker(MarkerOptions().position(it)
-                        .title(editText.text.toString())
-                        .icon(BitmapDescriptorFactory.fromBitmap(markerBitmap)))
-                adapter.addMarker(marker!!)
+                addMarker(googleMap,position,editText.text.toString())
             }
             .setNegativeButton(context.getString(R.string.cancel_btn)) { _, _ ->
                 constraintLayout.removeAllViews()
             }
             .show()
+
+
+    }
+
+    private fun addMarker(googleMap: GoogleMap,position:LatLng,title:String) {
+        val marker =
+            googleMap.addMarker(MarkerOptions().position(position)
+                .title(title)
+                .icon(BitmapDescriptorFactory.fromBitmap(markerBitmap)))
+        adapter.addMarker(marker!!)
     }
 
     private fun getLayout(editText: EditText): ConstraintLayout {
@@ -89,7 +94,7 @@ class MapPresenterImpl(mapFragment: MapContractsView, val context: Context) : IM
     private fun getEditText(): EditText {
         val editText = EditText(context).apply {
             setBackgroundTint(context.getColor(R.color.gradient_color))
-            setTextColor(Color.WHITE)
+            setTextColor(context.getColor(R.color.gradient_color))
             setHint(R.string.marker_name)
             setHintTextColor(context.getColor(R.color.gray_300))
             setPaddingRelative(50, 50, 50, 50)

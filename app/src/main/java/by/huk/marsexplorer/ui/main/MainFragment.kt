@@ -1,5 +1,6 @@
 package by.huk.marsexplorer.ui.main
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -37,10 +38,18 @@ class MainFragment : Fragment(),MainContractsView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        adapter = PhotoAdapter(requireActivity(),mainPresenter)
-        binding.recycler.layoutManager = GridLayoutManager(requireContext(),2)
-        binding.recycler.adapter = adapter
+        adapter = initRecycler(requireContext(),mainPresenter)
         mainPresenter.onViewCreated()
+
+    }
+
+    private fun initRecycler(context:Context, view:IMainPresenter):PhotoAdapter {
+        val adapter = PhotoAdapter(context,view)
+        with(binding.recycler){
+            layoutManager = GridLayoutManager(requireContext(),2)
+            this.adapter = adapter
+        }
+        return adapter
 
     }
 

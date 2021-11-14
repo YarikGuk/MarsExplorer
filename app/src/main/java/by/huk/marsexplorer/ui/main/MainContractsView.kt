@@ -7,5 +7,4 @@ interface MainContractsView {
     fun hideProgress()
     fun showPhotos(list:List<PhotoEntity>)
     fun onItemClick(photoUrl: String)
-
 }

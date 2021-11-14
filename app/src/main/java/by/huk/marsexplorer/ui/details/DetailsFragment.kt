@@ -13,7 +13,6 @@ import by.huk.marsexplorer.utils.Screens
 import com.bumptech.glide.Glide
 
 class DetailsFragment(private val photoUrl: String) : Fragment(), DetailContractView {
-
     private lateinit var presenter: IDetailPresenter
     private var _binding: FragmentDetailsBinding? = null
     private val binding get() = _binding!!

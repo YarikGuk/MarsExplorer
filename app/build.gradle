@@ -39,11 +39,12 @@ android {
 }
 
 dependencies {
+    //Firebase
     implementation 'com.google.firebase:firebase-messaging-ktx:23.0.0'
 
 
     //Mockito
-    androidTestImplementation('org.mockito.kotlin:mockito-kotlin:4.0.0')
+    implementation ("org.mockito.kotlin:mockito-kotlin:4.0.0")
 
     //Fab
     implementation 'com.getbase:floatingactionbutton:1.10.1'
@@ -105,9 +106,8 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
     androidTestImplementation('androidx.test.espresso:espresso-core:3.4.0')
-    androidTestImplementation('androidx.test.espresso:espresso-contrib:3.4.0')
+//    androidTestImplementation('androidx.test.espresso:espresso-contrib:3.4.0')
     androidTestImplementation('androidx.test.espresso:espresso-intents:3.4.0')
-    androidTestImplementation('androidx.test.espresso:espresso-accessibility:3.4.0')
     androidTestImplementation('androidx.test.espresso:espresso-web:3.4.0')
     androidTestImplementation('androidx.test.espresso.idling:idling-concurrent:3.4.0')
 }
