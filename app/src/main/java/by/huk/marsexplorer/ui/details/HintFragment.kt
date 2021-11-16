@@ -26,8 +26,10 @@ class HintFragment(private val photoUrl: String) : Fragment() {
         val image = view.findViewById<ImageView>(R.id.image_back)
 
         Glide.with(requireContext()).load(photoUrl).into(image)
-        App.INSTANCE.hintIsShowed = true
 
+        requireContext().getSharedPreferences("pref",0).apply {
+            edit().putBoolean("isFirstRun", false).apply()
+        }
         view.findViewById<ConstraintLayout>(R.id.hint_container).setOnClickListener {
             App.INSTANCE.router.backTo(Screens.details(photoUrl))
         }

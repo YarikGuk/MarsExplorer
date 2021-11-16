@@ -33,7 +33,8 @@ class DetailsFragment(private val photoUrl: String) : Fragment(), DetailContract
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        presenter.onViewCreated()
+
+        presenter.onViewCreated(requireContext())
         binding.goBackBtn.setOnClickListener { presenter.onButtonClick(it) }
         binding.shareBtn.setOnClickListener { presenter.onButtonClick(it) }
     }

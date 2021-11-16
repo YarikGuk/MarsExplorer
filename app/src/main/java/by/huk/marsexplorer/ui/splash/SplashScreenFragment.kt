@@ -35,7 +35,7 @@ class SplashScreenFragment : Fragment() {
         }
     }
 
-    fun isNetworkEnable(context: Context): Boolean {
+    private fun isNetworkEnable(context: Context): Boolean {
         val connectivityManager =
             context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         val capabilities =

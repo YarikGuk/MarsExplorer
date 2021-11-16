@@ -10,7 +10,6 @@ class App : Application() {
     private val cicerone = Cicerone.create()
     val router get() = cicerone.router
     val navigatorHolder get() = cicerone.getNavigatorHolder()
-    var hintIsShowed = false
 
     override fun onCreate() {
         super.onCreate()
