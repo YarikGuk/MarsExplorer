@@ -1,4 +1,4 @@
-package by.huk.marsexplorer.data.source.dto.space
+package by.huk.network.source.dto.space
 
 
 import com.google.gson.annotations.SerializedName

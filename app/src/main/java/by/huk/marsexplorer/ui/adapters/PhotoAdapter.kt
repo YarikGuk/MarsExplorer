@@ -10,7 +10,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import by.huk.marsexplorer.R
-import by.huk.marsexplorer.data.entities.crypto.PhotoEntity
+import by.huk.network.entities.crypto.PhotoEntity
 import by.huk.marsexplorer.databinding.ItemPhotoBinding
 import by.huk.marsexplorer.ui.main.IMainPresenter
 import com.bumptech.glide.Glide

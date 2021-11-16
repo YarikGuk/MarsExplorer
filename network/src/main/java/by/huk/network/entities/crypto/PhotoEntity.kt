@@ -1,4 +1,4 @@
-package by.huk.marsexplorer.data.entities.crypto
+package by.huk.network.entities.crypto
 
 
 data class PhotoEntity(

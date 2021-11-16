@@ -1,4 +1,4 @@
-package by.huk.marsexplorer.data.source.dto
+package by.huk.network.source.dto
 
 
 interface Mapper<R,E>{

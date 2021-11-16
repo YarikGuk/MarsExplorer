@@ -1,6 +1,6 @@
 package by.huk.marsexplorer.ui.main
 
-import by.huk.marsexplorer.data.entities.crypto.PhotoEntity
+import by.huk.network.entities.crypto.PhotoEntity
 
 interface MainContractsView {
     fun showProgress()

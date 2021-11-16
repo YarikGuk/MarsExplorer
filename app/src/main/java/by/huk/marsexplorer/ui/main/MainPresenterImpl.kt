@@ -1,8 +1,8 @@
 package by.huk.marsexplorer.ui.main
 
 import by.huk.marsexplorer.App
-import by.huk.marsexplorer.data.entities.crypto.PhotoEntity
-import by.huk.marsexplorer.data.source.dto.mappers.MarsResponseMapper
+import by.huk.network.entities.crypto.PhotoEntity
+import by.huk.network.source.dto.mappers.MarsResponseMapper
 import by.huk.marsexplorer.utils.Screens
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.annotations.NonNull

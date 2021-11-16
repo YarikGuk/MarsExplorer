@@ -1,8 +1,8 @@
-package by.huk.marsexplorer.data.network.crypto
+package by.huk.network.network.crypto
 
-import by.huk.marsexplorer.data.source.dto.space.MarsResponse
-import by.huk.marsexplorer.utils.API_KEY
-import by.huk.marsexplorer.utils.PAGE
+import by.huk.network.source.dto.space.MarsResponse
+import by.huk.network.utils.API_KEY
+import by.huk.network.utils.PAGE
 import io.reactivex.rxjava3.core.Observable
 import retrofit2.http.GET
 import retrofit2.http.Query

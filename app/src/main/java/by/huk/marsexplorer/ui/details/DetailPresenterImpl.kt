@@ -20,6 +20,4 @@ class DetailPresenterImpl(detailsFragment: DetailContractView) : IDetailPresente
         if (isFirstRun) view.showHint()
         view.loadImage()
     }
-
-
 }

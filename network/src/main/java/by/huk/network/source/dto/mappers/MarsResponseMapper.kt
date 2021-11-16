@@ -1,11 +1,11 @@
-package by.huk.marsexplorer.data.source.dto.mappers
+package by.huk.network.source.dto.mappers
 
-import by.huk.marsexplorer.data.entities.crypto.PhotoEntity
-import by.huk.marsexplorer.data.source.dto.Mapper
-import by.huk.marsexplorer.data.source.dto.space.MarsResponse
+import by.huk.network.entities.crypto.PhotoEntity
+import by.huk.network.source.dto.Mapper
+import by.huk.network.source.dto.space.MarsResponse
 import javax.inject.Inject
 
-class MarsResponseMapper @Inject constructor():Mapper<MarsResponse.Photo?,PhotoEntity> {
+class MarsResponseMapper @Inject constructor(): Mapper<MarsResponse.Photo?, PhotoEntity> {
     override fun map(from: MarsResponse.Photo?): PhotoEntity {
         return PhotoEntity(
             id = from?.id?:0,

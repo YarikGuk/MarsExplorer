@@ -1,8 +1,8 @@
 package by.huk.marsexplorer.di.module
 
 import by.huk.marsexplorer.BuildConfig
-import by.huk.marsexplorer.data.model.Model
-import by.huk.marsexplorer.data.network.crypto.SpaceService
+import by.huk.network.network.crypto.SpaceService
+import by.huk.network.model.Model
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module
@@ -13,11 +13,12 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+
 @Module
 class NetModule {
 
     @Provides
-    fun getModule(service: SpaceService):Model{
+    fun getModule(service: SpaceService): Model {
         return Model(service)
     }
 
