@@ -5,21 +5,28 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import by.huk.marsexplorer.App
 import by.huk.marsexplorer.R
+import by.huk.marsexplorer.appComponent
 import by.huk.marsexplorer.databinding.FragmentDetailsBinding
+import by.huk.marsexplorer.ui.base.BaseFragment
 import by.huk.marsexplorer.utils.Screens
 import com.bumptech.glide.Glide
+import com.github.terrakok.cicerone.Router
+import javax.inject.Inject
 
-class DetailsFragment(private val photoUrl: String) : Fragment(), DetailContractView {
-    private lateinit var presenter: IDetailPresenter
+class DetailsFragment(private val photoUrl: String) : BaseFragment(), DetailContractView {
+
     private var _binding: FragmentDetailsBinding? = null
     private val binding get() = _binding!!
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        getPresenter()
+    @Inject
+    lateinit var presenter: IDetailPresenter
+    @Inject
+    lateinit var router: Router
+
+    override fun attachPresenter() {
+        requireContext().appComponent.inject(this)
+        presenter.attach(this)
     }
 
     override fun onCreateView(
@@ -39,17 +46,13 @@ class DetailsFragment(private val photoUrl: String) : Fragment(), DetailContract
         binding.shareBtn.setOnClickListener { presenter.onButtonClick(it) }
     }
 
-    private fun getPresenter(): IDetailPresenter {
-        presenter = DetailPresenterImpl(this)
-        return presenter
-    }
 
     override fun popBackStack() {
-        App.INSTANCE.router.backTo(Screens.main())
+        router.backTo(Screens.main())
     }
 
     override fun showHint() {
-        App.INSTANCE.router.navigateTo(Screens.hint(photoUrl))
+        router.navigateTo(Screens.hint(photoUrl))
     }
 
     override fun sharePhoto() {

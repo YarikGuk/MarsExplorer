@@ -1,21 +1,21 @@
 package by.huk.marsexplorer.ui.main
 
-import by.huk.marsexplorer.App
 import by.huk.network.entities.crypto.PhotoEntity
 import by.huk.network.source.dto.mappers.MarsResponseMapper
 import by.huk.marsexplorer.utils.Screens
+import by.huk.network.model.Model
+import com.github.terrakok.cicerone.Router
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.annotations.NonNull
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.schedulers.Schedulers
 
-class MainPresenterImpl(mainFragment: MainContractsView):IMainPresenter {
-    private var view: MainContractsView = mainFragment
-    private val model = App.INSTANCE.appComponent.model
-    private val router = App.INSTANCE.router
+class MainPresenterImpl(private val model: Model,private val router: Router):IMainPresenter {
+    lateinit var view: MainContractsView
     private val disposable = CompositeDisposable()
     private val initList = mutableListOf<PhotoEntity>()
+
 
     private fun getPhotoList() {
         disposable.add(model.getPhotoList()
@@ -41,6 +41,10 @@ class MainPresenterImpl(mainFragment: MainContractsView):IMainPresenter {
 
     override fun onItemCLick(photoUrl: String) {
         router.navigateTo(Screens.details(photoUrl))
+    }
+
+    override fun attach(view: MainContractsView) {
+        this.view = view
     }
 
     override fun onViewCreated() {

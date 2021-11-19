@@ -1,31 +1,34 @@
 package by.huk.marsexplorer.ui.map
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
+import android.view.*
+import android.widget.PopupMenu
+import androidx.constraintlayout.widget.ConstraintLayout
 import by.huk.marsexplorer.R
+import by.huk.marsexplorer.appComponent
 import by.huk.marsexplorer.databinding.FragmentMapBinding
+import by.huk.marsexplorer.ui.base.BaseFragment
 import by.huk.marsexplorer.ui.adapters.MarkerAdapter
+import carbon.widget.EditText
+import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.LatLng
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import javax.inject.Inject
 
-class MapFragment : Fragment(), MapContractsView {
+class MapFragment : BaseFragment(), MapContractsView {
 
     private var _binding: FragmentMapBinding? = null
     private val binding get() = _binding!!
-    private lateinit var presenter: IMapPresenter
     private lateinit var bottomSheet: BottomSheetBehavior<View>
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        getPresenter()
-    }
+    @Inject
+    lateinit var presenter: IMapPresenter
 
-    private fun getPresenter(): IMapPresenter {
-        presenter = MapPresenterImpl(this, requireContext())
-        return presenter
+    override fun attachPresenter() {
+        requireContext().appComponent.inject(this)
+        presenter.attach(this)
     }
 
     override fun onCreateView(
@@ -41,6 +44,7 @@ class MapFragment : Fragment(), MapContractsView {
         super.onViewCreated(view, savedInstanceState)
         presenter.onViewCreated()
 
+
         bottomSheet = BottomSheetBehavior.from(view.findViewById(R.id.bottom_sheet)).apply {
             isFitToContents = false
             halfExpandedRatio = 0.5f
@@ -50,7 +54,7 @@ class MapFragment : Fragment(), MapContractsView {
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
         mapFragment?.getMapAsync(presenter.setMapCallback())
 
-        binding.landscape.setOnClickListener { presenter.showPopup(view,R.menu.popup_menu,requireContext())}
+        binding.landscape.setOnClickListener { presenter.onLandscapeButtonClick() }
     }
 
     override fun onDestroyView() {
@@ -62,7 +66,54 @@ class MapFragment : Fragment(), MapContractsView {
         binding.bottomSheet.bottomSheetRecycler.adapter = adapter
     }
 
+    override fun showPopup() {
+        PopupMenu(context, view, Gravity.END, R.attr.actionOverflowMenuStyle, 0).apply {
+            menuInflater.inflate(R.menu.popup_menu, this.menu)
+            setOnMenuItemClickListener { menuItem: MenuItem ->
+                when (menuItem.itemId) {
+                    R.id.menu_normal -> presenter.setMapType(GoogleMap.MAP_TYPE_NORMAL)
+                    R.id.menu_hybrid -> presenter.setMapType(GoogleMap.MAP_TYPE_HYBRID)
+                    R.id.menu_satellite -> presenter.setMapType(GoogleMap.MAP_TYPE_SATELLITE)
+                }
+                true
+            }
+        }.show()
+    }
 
+    override fun showDialog(googleMap:GoogleMap,position:LatLng) {
+        val editText = getEditText()
+        val constraintLayout = getLayout(editText)
 
+        MaterialAlertDialogBuilder(requireContext())
+            .setView(constraintLayout)
+            .setPositiveButton(requireContext().getString(R.string.save_btn)) { _, _ ->
+                presenter.addMarker(googleMap,position,editText.text.toString())
+            }
+            .setNegativeButton(requireContext().getString(R.string.cancel_btn)) { _, _ ->
+                constraintLayout.removeAllViews()
+            }
+            .show()
+    }
+
+    private fun getLayout(editText: EditText): ConstraintLayout {
+        val constraintLayout = ConstraintLayout(requireContext()).apply {
+            addView(editText,
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT)
+            setPaddingRelative(50, 50, 50, 150)
+        }
+        return constraintLayout
+    }
+
+    private fun getEditText(): EditText {
+        val editText = EditText(requireContext()).apply {
+            setBackgroundTint(context.getColor(R.color.gradient_color))
+            setTextColor(context.getColor(R.color.gradient_color))
+            setHint(R.string.marker_name)
+            setHintTextColor(context.getColor(R.color.gray_300))
+            setPaddingRelative(50, 50, 50, 50)
+        }
+        return editText
+    }
 
 }

@@ -4,8 +4,8 @@ import android.content.Context
 import android.view.View
 import by.huk.marsexplorer.R
 
-class DetailPresenterImpl(detailsFragment: DetailContractView) : IDetailPresenter {
-    val view: DetailContractView = detailsFragment
+class DetailPresenterImpl : IDetailPresenter {
+   lateinit var view: DetailContractView
 
 
     override fun onButtonClick(button: View) {
@@ -19,5 +19,9 @@ class DetailPresenterImpl(detailsFragment: DetailContractView) : IDetailPresente
         val isFirstRun = context.getSharedPreferences("pref", 0).getBoolean("isFirstRun", true)
         if (isFirstRun) view.showHint()
         view.loadImage()
+    }
+
+    override fun attach(view: DetailContractView) {
+        this.view = view
     }
 }

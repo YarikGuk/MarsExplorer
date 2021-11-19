@@ -14,6 +14,7 @@
         app:labelVisibilityMode="unlabeled"
         app:itemIconSize="@dimen/nav_bar_icon_size"
         android:elevation="@dimen/margin_normal"
+        android:visibility="visible"
         android:background="@color/colorPrimaryVariant"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"

@@ -6,4 +6,5 @@ import android.view.View
 interface IDetailPresenter {
     fun onButtonClick(button: View)
     fun onViewCreated(context: Context)
+    fun attach(view: DetailContractView)
 }

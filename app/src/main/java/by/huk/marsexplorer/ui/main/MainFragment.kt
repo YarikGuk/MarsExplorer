@@ -5,54 +5,58 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import by.huk.marsexplorer.R
-import by.huk.network.entities.crypto.PhotoEntity
+import by.huk.marsexplorer.appComponent
 import by.huk.marsexplorer.databinding.FragmentMainBinding
+import by.huk.marsexplorer.ui.base.BaseFragment
 import by.huk.marsexplorer.ui.adapters.PhotoAdapter
 import by.huk.marsexplorer.utils.applyLoopingAnimatedVectorDrawable
+import by.huk.marsexplorer.utils.isVisible
+import by.huk.network.entities.crypto.PhotoEntity
+import javax.inject.Inject
 
-class MainFragment : Fragment(),MainContractsView {
+class MainFragment : BaseFragment(), MainContractsView {
+
+
 
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
-
-    private lateinit var mainPresenter: IMainPresenter
     private lateinit var adapter: PhotoAdapter
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        getPresenter()
+    @Inject
+    lateinit var mainPresenter: IMainPresenter
+
+    override fun attachPresenter() {
+        requireContext().appComponent.inject(this)
+        mainPresenter.attach(this)
     }
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
-
         _binding = FragmentMainBinding.inflate(inflater, container, false)
-       return binding.root
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        adapter = initRecycler(requireContext(),mainPresenter)
+        adapter = initRecycler(requireContext(), mainPresenter)
         mainPresenter.onViewCreated()
 
     }
 
-    private fun initRecycler(context:Context, view:IMainPresenter):PhotoAdapter {
-        val adapter = PhotoAdapter(context,view)
-        with(binding.recycler){
-            layoutManager = GridLayoutManager(requireContext(),2)
+    private fun initRecycler(context: Context, view: IMainPresenter): PhotoAdapter {
+        val adapter = PhotoAdapter(context, view)
+        with(binding.recycler) {
+            layoutManager = GridLayoutManager(requireContext(), 2)
             this.adapter = adapter
         }
         return adapter
 
     }
-
 
     override fun onDestroyView() {
         super.onDestroyView()
@@ -60,19 +64,14 @@ class MainFragment : Fragment(),MainContractsView {
         _binding = null
     }
 
-    private fun getPresenter():IMainPresenter{
-        mainPresenter = MainPresenterImpl(this)
-        return mainPresenter
-    }
-
     override fun showProgress() {
-        binding.progress.applyLoopingAnimatedVectorDrawable(R.drawable.progress_anim,true)
-        binding.progress.visibility = View.VISIBLE
+        binding.progress.applyLoopingAnimatedVectorDrawable(R.drawable.progress_anim, true)
+        binding.progress.isVisible(true)
     }
 
     override fun hideProgress() {
-        binding.progress.applyLoopingAnimatedVectorDrawable(R.drawable.progress_anim,false)
-        binding.progress.visibility = View.GONE
+        binding.progress.applyLoopingAnimatedVectorDrawable(R.drawable.progress_anim, false)
+        binding.progress.isVisible(false)
     }
 
     override fun showPhotos(list: List<PhotoEntity>) {
@@ -80,7 +79,7 @@ class MainFragment : Fragment(),MainContractsView {
     }
 
     override fun onItemClick(photoUrl: String) {
-         mainPresenter.onItemCLick(photoUrl)
+        mainPresenter.onItemCLick(photoUrl)
     }
 
 
