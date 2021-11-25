@@ -21,7 +21,7 @@ class MainPresenterImpl(private val model: Model,private val router: Router):IMa
         disposable.add(model.getPhotoList()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .flatMap { response ->
+            .map { response ->
                 val list = response?.photos?.map {
                     MarsResponseMapper().map(it)
                 }
@@ -30,8 +30,6 @@ class MainPresenterImpl(private val model: Model,private val router: Router):IMa
                     initList.addAll(list)
                 }
                 view.hideProgress()
-                Observable.fromIterable(list as @NonNull MutableIterable<*>)
-                    .subscribeOn(Schedulers.io())
             }.subscribe({}, {}))
     }
 
