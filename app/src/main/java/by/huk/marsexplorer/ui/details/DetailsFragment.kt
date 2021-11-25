@@ -25,8 +25,8 @@ class DetailsFragment(private val photoUrl: String) : BaseFragment<FragmentDetai
         requireContext().appComponent.inject(this)
         presenter.attach(this)
     }
-    override fun getBinding(inflater: LayoutInflater, container: ViewGroup?,): FragmentDetailsBinding {
-        return  FragmentDetailsBinding.inflate(inflater, container, false)
+    override fun getViewBinding(): FragmentDetailsBinding {
+        return  FragmentDetailsBinding.inflate(layoutInflater)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

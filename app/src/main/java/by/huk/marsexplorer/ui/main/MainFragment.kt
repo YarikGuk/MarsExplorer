@@ -23,8 +23,8 @@ class MainFragment : BaseFragment<FragmentMainBinding>(), MainContractsView {
     @Inject
     lateinit var mainPresenter: IMainPresenter
 
-    override fun getBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentMainBinding {
-        return FragmentMainBinding.inflate(inflater,container,false)
+    override fun getViewBinding(): FragmentMainBinding {
+        return FragmentMainBinding.inflate(layoutInflater)
     }
 
     override fun attachPresenter() {

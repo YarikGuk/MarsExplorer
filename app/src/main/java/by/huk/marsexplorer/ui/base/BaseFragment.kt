@@ -11,7 +11,6 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment() {
 
     protected lateinit var binding: VB
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         attachPresenter()
@@ -22,11 +21,11 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        binding = getBinding(inflater,container)
+        binding = getViewBinding()
         return binding.root
     }
 
-    protected abstract fun getBinding(inflater: LayoutInflater, container: ViewGroup?):VB
+    protected abstract fun getViewBinding():VB
 
     protected abstract fun attachPresenter()
 

@@ -29,8 +29,8 @@ class MapFragment : BaseFragment<FragmentMapBinding>(), MapContractsView {
         presenter.attach(this)
     }
 
-    override fun getBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentMapBinding {
-        return FragmentMapBinding.inflate(inflater,container,false)
+    override fun getViewBinding(): FragmentMapBinding {
+        return FragmentMapBinding.inflate(layoutInflater)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
