@@ -16,28 +16,20 @@ import by.huk.marsexplorer.utils.isVisible
 import by.huk.network.entities.crypto.PhotoEntity
 import javax.inject.Inject
 
-class MainFragment : BaseFragment(), MainContractsView {
+class MainFragment : BaseFragment<FragmentMainBinding>(), MainContractsView {
 
-
-
-    private var _binding: FragmentMainBinding? = null
-    private val binding get() = _binding!!
     private lateinit var adapter: PhotoAdapter
 
     @Inject
     lateinit var mainPresenter: IMainPresenter
 
+    override fun getBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentMainBinding {
+        return FragmentMainBinding.inflate(inflater,container,false)
+    }
+
     override fun attachPresenter() {
         requireContext().appComponent.inject(this)
         mainPresenter.attach(this)
-    }
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?,
-    ): View {
-        _binding = FragmentMainBinding.inflate(inflater, container, false)
-        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -61,7 +53,6 @@ class MainFragment : BaseFragment(), MainContractsView {
     override fun onDestroyView() {
         super.onDestroyView()
         mainPresenter.onDestroy()
-        _binding = null
     }
 
     override fun showProgress() {
@@ -81,6 +72,8 @@ class MainFragment : BaseFragment(), MainContractsView {
     override fun onItemClick(photoUrl: String) {
         mainPresenter.onItemCLick(photoUrl)
     }
+
+
 
 
 }

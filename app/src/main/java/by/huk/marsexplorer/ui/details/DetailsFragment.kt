@@ -14,10 +14,7 @@ import com.bumptech.glide.Glide
 import com.github.terrakok.cicerone.Router
 import javax.inject.Inject
 
-class DetailsFragment(private val photoUrl: String) : BaseFragment(), DetailContractView {
-
-    private var _binding: FragmentDetailsBinding? = null
-    private val binding get() = _binding!!
+class DetailsFragment(private val photoUrl: String) : BaseFragment<FragmentDetailsBinding>(), DetailContractView {
 
     @Inject
     lateinit var presenter: IDetailPresenter
@@ -28,14 +25,8 @@ class DetailsFragment(private val photoUrl: String) : BaseFragment(), DetailCont
         requireContext().appComponent.inject(this)
         presenter.attach(this)
     }
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?,
-    ): View {
-        _binding = FragmentDetailsBinding.inflate(inflater, container, false)
-        return binding.root
+    override fun getBinding(inflater: LayoutInflater, container: ViewGroup?,): FragmentDetailsBinding {
+        return  FragmentDetailsBinding.inflate(inflater, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -69,10 +60,9 @@ class DetailsFragment(private val photoUrl: String) : BaseFragment(), DetailCont
         Glide.with(requireContext()).load(photoUrl).into(binding.photo)
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
+
+
+
 }
 
 

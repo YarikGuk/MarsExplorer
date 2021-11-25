@@ -17,10 +17,8 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import javax.inject.Inject
 
-class MapFragment : BaseFragment(), MapContractsView {
+class MapFragment : BaseFragment<FragmentMapBinding>(), MapContractsView {
 
-    private var _binding: FragmentMapBinding? = null
-    private val binding get() = _binding!!
     private lateinit var bottomSheet: BottomSheetBehavior<View>
 
     @Inject
@@ -31,13 +29,8 @@ class MapFragment : BaseFragment(), MapContractsView {
         presenter.attach(this)
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?,
-    ): View {
-        _binding = FragmentMapBinding.inflate(inflater, container, false)
-        return binding.root
+    override fun getBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentMapBinding {
+        return FragmentMapBinding.inflate(inflater,container,false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -55,11 +48,6 @@ class MapFragment : BaseFragment(), MapContractsView {
         mapFragment?.getMapAsync(presenter.setMapCallback())
 
         binding.landscape.setOnClickListener { presenter.onLandscapeButtonClick() }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
     override fun attachAdapter(adapter: MarkerAdapter) {
@@ -115,5 +103,6 @@ class MapFragment : BaseFragment(), MapContractsView {
         }
         return editText
     }
+
 
 }
